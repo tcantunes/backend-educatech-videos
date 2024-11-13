@@ -6,9 +6,11 @@ const GetVideosByCategoryUseCase = require('./useCases/getVideosByCategory/GetVi
 const GetVideosByCategoryController = require('./useCases/getVideosByCategory/GetVideosByCategoryController');
 const DeleteVideoUseCase = require('./useCases/deleteVideo/DeleteVideoUseCase');
 const DeleteVideoController = require('./useCases/deleteVideo/DeleteVideoController');
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 const videoRepository = new MongoVideoRepository();
 const addVideoController = new AddVideoController(new AddVideoUseCase(videoRepository));
